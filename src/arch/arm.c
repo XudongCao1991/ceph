@@ -19,7 +19,7 @@ static unsigned long get_auxval(unsigned long type)
 {
 	unsigned long result = 0;
 	int read = 0;
-	FILE *f = open("/proc/self/auxv", "r");
+	FILE *f = fopen("/proc/self/auxv", "r");
 	if (f) {
 		ElfW(auxv_t) entry;
 		while ((read = fread(&entry, sizeof(entry), 1, f)) > 0) {
